@@ -24,6 +24,8 @@ public class RegWorker {
 
     private String password;
 
+    private String role;
+
     @Builder.Default
     private boolean active = true;
     
