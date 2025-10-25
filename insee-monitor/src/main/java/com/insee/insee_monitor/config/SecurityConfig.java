@@ -4,8 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 
     @Bean
@@ -13,9 +15,10 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable()) // disable CSRF for APIs (Postman etc.)
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/workers/reg").permitAll() // allow registration without auth
+                .requestMatchers("/api/workers/reg","/api/auth/login").permitAll() // allow registration without auth
                 .anyRequest().authenticated() // other endpoints require login
             )
+        
             .formLogin(login -> login.disable())
             .httpBasic(basic -> basic.disable()); // no basic auth popup
 
