@@ -15,7 +15,7 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable()) // disable CSRF for APIs (Postman etc.)
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/workers/reg","/api/auth/login").permitAll() // allow registration without auth
+                .requestMatchers("/api/workers/reg","/api/auth/login","/api/bins/**").permitAll() // allow registration without auth
                 .anyRequest().authenticated() // other endpoints require login
             )
         
