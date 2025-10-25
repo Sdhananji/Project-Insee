@@ -6,5 +6,5 @@ import java.util.Optional;
 public interface BinRepo extends JpaRepository<Bin, Long >{
     
 
-    Optional<Bin>finfByEmail(String binNumber);
+    Optional<Bin>findByBinNumber(String binNumber);
 }

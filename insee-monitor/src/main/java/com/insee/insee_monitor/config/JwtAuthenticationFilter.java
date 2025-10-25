@@ -13,10 +13,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import com.insee.insee_monitor.config.JwtService;
-
-import java.util.Collections;
-
 
 
 

@@ -1,7 +1,6 @@
 package com.insee.insee_monitor.config;
 import org.springframework.stereotype.Service;
 
-import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import java.security.Key;
 

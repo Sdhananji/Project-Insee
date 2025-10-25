@@ -8,7 +8,7 @@ import java.util.List;
 public interface BinService {
 
     String registerBins(BinDTO bindto);
-    BinDTO getByBinNumber(String binNumber);
+    BinDTO getBinByBinNumber(String binNumber);
     List<BinDTO> getAllBins();
     String updateBinWeight(String binNumber, double weight);
 

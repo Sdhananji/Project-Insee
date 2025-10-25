@@ -28,7 +28,7 @@ public class Bin {
 
     private String binLocation;
 
-    private double MaxCapacity; //in kg or tons
+    private double maxCapacity; //in kg or tons
     private double currentWeight; //realtime updated weights of each bin
 
     private String status; //EMPTY,NORMAL,FULL
