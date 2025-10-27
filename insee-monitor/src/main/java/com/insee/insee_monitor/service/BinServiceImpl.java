@@ -40,19 +40,21 @@ public class BinServiceImpl implements BinService {
     }
 
     public BinDTO getBinByBinNumber(String binNumber){
-        Bin bin = binRepo.findByBinNumber(binNumber)
-            .orElseThrow(()->new RuntimeException("Bin does not found!"));
-
-
-            BinDTO binDto = new BinDTO();
-            binDto.setBinNumber(bin.getBinNumber());
-            binDto.setBinLocation(bin.getBinLocation());
-            binDto.setMaxCapacity(bin.getMaxCapacity());
-            binDto.setCurrentWeight(bin.getCurrentWeight());
-            binDto.setStatus(bin.getStatus());
-
-            return binDto;
+        System.out.println("Looking for the bin: "+binNumber);
+        return binRepo.findByBinNumber(binNumber)
+            .map(bin -> {
+                System.out.println("Found bin: "+bin.getBinNumber());
+                BinDTO binDto = new BinDTO();
+                binDto.setBinNumber(bin.getBinNumber());
+                binDto.setBinLocation(bin.getBinLocation());
+                binDto.setMaxCapacity(bin.getMaxCapacity());
+                binDto.setCurrentWeight(bin.getCurrentWeight());
+                binDto.setStatus(bin.getStatus());
+                return binDto;
+            })
+            .orElse(null); // return null if bin not found
     }
+
 
     @Override
     public List<BinDTO> getAllBins(){

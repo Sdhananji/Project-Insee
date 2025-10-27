@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.insee.insee_monitor.dto.BinDTO;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +33,16 @@ public class BinController {
 
     @GetMapping("/{binNumber}")
     public ResponseEntity<BinDTO> getBin(@PathVariable String binNumber){
-        return ResponseEntity.ok(binService.getBinByBinNumber(binNumber));
+        System.out.println("=== CONTROLLER: Received request for bin: " + binNumber);
+        BinDTO bin = binService.getBinByBinNumber(binNumber);
+        System.out.println("=== CONTROLLER: Service returned: " + bin);
+        
+        if (bin == null){
+            System.out.println("=== CONTROLLER: Bin not found, returning 404");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        System.out.println("=== CONTROLLER: Returning bin with status 200");
+        return ResponseEntity.ok(bin);
     }
 
     @GetMapping
